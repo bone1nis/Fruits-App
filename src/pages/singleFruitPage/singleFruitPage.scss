@@ -1,0 +1,44 @@
+@use "../../assets/style/_variables.scss" as *;
+
+.single-fruit {
+    background-color: rgba(93, 113, 221, 0.1);
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    &__title {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    &__info {
+        width: 100%;
+        margin: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        font-size: 20px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    &__description {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        width: 80%;
+    }
+    &__btn {
+        border-radius: 20px;
+        padding: 10px 60px;
+        background-color: $main-color;
+        color: #fff;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &:hover {
+            color: #fff;
+            opacity: 0.8;
+            transition: 1s all ease;
+        }
+    }
+}

@@ -1,0 +1,65 @@
+@use "../../assets/style/_variables.scss" as *;
+
+.create-form {
+    background-color: rgba(93, 113, 221, 0.1);
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    &__title {
+        font-size: 24px;
+        color: $dark;
+        margin-bottom: 30px;
+    }
+    &__form {
+        width: 800px;
+        margin: 0 auto;
+    }
+    &__section {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+    }
+    &__input {
+        width: 100%;
+	    font-size: 18px;
+	    padding: 6px 0 4px 10px;
+	    border: 1px solid #92a2f8;
+	    border-radius: 8px;
+        box-shadow: 4px 8px 40px 0 rgba(8, 24, 111, 0.1);
+    }
+    &__label {
+        margin: 10px;
+    }
+    &__error {
+        color: red;
+        margin: 5px 0;
+        font-weight: bold;
+    }
+    &__information {
+        display: flex;
+    }
+    &__submit {
+        margin: 20px auto;
+        border-radius: 20px;
+        padding: 10px 60px;
+        width: 130px;
+        height: 30px;
+        background-color: $main-color;
+        color: #fff;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &:hover {
+            color: #fff;
+            opacity: 0.8;
+            transition: 1s all ease;
+        }
+        &:disabled {
+            color: #fff;
+            opacity: 0.5;
+            cursor: auto;
+        }
+    }
+}
