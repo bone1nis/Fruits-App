@@ -1,15 +1,29 @@
 import { ReactElement } from "react";
 
-import { SubmitHandler, useForm } from "react-hook-form";
+import { FieldErrors, SubmitHandler, useForm, UseFormRegister } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup"
+import { nanoid } from "nanoid";
 
 import { useAppDispatch } from "../../hooks/hooks";
 import { fruitsAdd } from "../../store/fruitsSlice";
 import { IFruit } from "../../types/data";
 
 import "./cardCreateForm.scss"
-import { nanoid } from "nanoid";
+
+type FormData = yup.InferType<typeof schema>;
+
+interface InputFieldProps {
+    id: keyof FormData,
+    label: string,
+    register: UseFormRegister<FormData>,
+    errors: FieldErrors<FormData>
+}
+
+const numberField = () => yup.number()
+.max(10000, "The value of this field can be no more than 10000")
+.required("This field is required")
+.typeError("The value of this field can only be a number");
 
 const schema = yup.object({
     name: yup.string()
@@ -20,28 +34,13 @@ const schema = yup.object({
         .required("This field is required"),
     genus: yup.string()
         .required("This field is required"),
-    calories: yup.number()
-        .max(10000, "The value of this field can be no more than 10000")
-        .required("This field is reasdasdquired")
-        .typeError("The value of this field can only be a number"),
-    fat: yup.number()
-        .max(10000, "The value of this field can be no more than 10000")
-        .required("This field is required")
-        .typeError("The value of this field can only be a number"),
-    sugar: yup.number()
-        .max(10000, "The value of this field can be no more than 10000")
-        .required("This field is required")
-        .typeError("The value of this field can only be a number"),
-    carbohydrates: yup.number()
-        .max(10000, "The value of this field can be no more than 10000")
-        .required("This field is required")
-        .typeError("The value of this field can only be a number"),
-    protein: yup.number()
-        .max(10000, "The value of this field can be no more than 10000")
-        .required("This field is required")
-        .typeError("The value of this field can only be a number"),
+    calories: numberField(),
+    fat: numberField(),
+    sugar: numberField(),
+    carbohydrates: numberField(),
+    protein: numberField(),
 })
-type FormData = yup.InferType<typeof schema>;
+
 
 const CardCreateForm = (): ReactElement => {
 
@@ -71,93 +70,41 @@ const CardCreateForm = (): ReactElement => {
         }
         
         dispatch(fruitsAdd(res))
-    };
+    }
 
-return (
+    return (
         <div className="create-form">
             <h2 className="create-form__title">Create your own fruit</h2>
             <form className="create-form__form" onSubmit={handleSubmit(onSubmit)}>
-                <div className="create-form__section">
-                    <label htmlFor="name" className="create-form__label">Name:</label>
-                    <input 
-                        id="name" 
-                        className="create-form__input"
-                        {...register("name")} />
-                    {errors.name && <span className="create-form__error">{errors.name?.message}</span>}
-                </div>
+                <InputField id={"name"} label={"Name:"} register={register} errors={errors}/>
                 <div className="create-form__information">
-                    <div className="create-form__section">
-                        <label htmlFor="family" className="create-form__label">Family:</label>
-                        <input 
-                            id="family" 
-                            className="create-form__input"
-                            {...register("family")} />
-                        {errors.family && <span className="create-form__error">{errors.family?.message}</span>}
-                    </div>
-                    <div className="create-form__section">
-                        <label htmlFor="order" className="create-form__label">Order:</label>
-                        <input 
-                            id="order" 
-                            className="create-form__input"
-                            {...register("order")} />
-                        {errors.order && <span className="create-form__error">{errors.order?.message}</span>}
-                    </div>
-                    <div className="create-form__section">
-                        <label htmlFor="genus" className="create-form__label">Genus:</label>
-                        <input 
-                            id="genus" 
-                            className="create-form__input"
-                            {...register("genus")} />
-                        {errors.genus && <span className="create-form__error">{errors.genus?.message}</span>}
-                    </div>
+                    <InputField id={"family"} label={"Family:"} register={register} errors={errors}/>
+                    <InputField id={"order"} label={"Order:"} register={register} errors={errors}/>
+                    <InputField id={"genus"} label={"Genus:"} register={register} errors={errors}/>
                 </div>
-                <div className="create-form__section">
-                    <label htmlFor="calories" className="create-form__label">Calories:</label>
-                    <input 
-                        id="calories" 
-                        className="create-form__input"
-                        {...register("calories")} />
-                    {errors.calories && <span className="create-form__error">{errors.calories?.message}</span>}
-                </div>
-                <div className="create-form__section">
-                    <label htmlFor="fat" className="create-form__label">Fat:</label>
-                    <input 
-                        id="fat" 
-                        className="create-form__input"
-                        {...register("fat")} />
-                    {errors.fat && <span className="create-form__error">{errors.fat?.message}</span>}
-                </div>
-                <div className="create-form__section">
-                    <label htmlFor="sugar" className="create-form__label">Sugar:</label>
-                    <input 
-                        id="sugar" 
-                        className="create-form__input"
-                        {...register("sugar")} />
-                    {errors.sugar && <span className="create-form__error">{errors.sugar?.message}</span>}
-                </div>
-                <div className="create-form__section">
-                    <label htmlFor="carbohydrates" className="create-form__label">Carbohydrates:</label>
-                    <input 
-                        id="carbohydrates" 
-                        className="create-form__input"
-                        {...register("carbohydrates")} />
-                    {errors.carbohydrates && <span className="create-form__error">{errors.carbohydrates?.message}</span>}
-                </div>
-                <div className="create-form__section">
-
-Кристина, [09.01.2025 16:16]
-<label htmlFor="protein" className="create-form__label">Protein:</label>
-                    <input 
-                        id="protein" 
-                        className="create-form__input"
-                        {...register("protein")} />
-                    {errors.protein && <span className="create-form__error">{errors.protein?.message}</span>}
-                </div>
+                <InputField id={"calories"} label={"Calories:"} register={register} errors={errors}/>
+                <InputField id={"fat"} label={"Fat:"} register={register} errors={errors}/>
+                <InputField id={"sugar"} label={"Sugar:"} register={register} errors={errors}/>
+                <InputField id={"carbohydrates"} label={"Carbohydrates:"} register={register} errors={errors}/>
+                <InputField id={"protein"} label={"Protein:"} register={register} errors={errors}/>
                 <button 
                     type="submit" 
                     className="create-form__submit"
                     disabled={!isValid}>Send</button>
             </form>
+        </div>
+    )
+}
+
+const InputField = ({ id, label, register, errors }: InputFieldProps): ReactElement => {
+    return (
+        <div className="create-form__section">
+            <label htmlFor={id} className="create-form__label">{label}</label>
+            <input 
+                id={id}
+                className="create-form__input"
+                {...register(id)} />
+            {errors[id] && <span className="create-form__error">{errors[id].message}</span>}
         </div>
     )
 }

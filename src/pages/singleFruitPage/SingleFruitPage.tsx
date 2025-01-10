@@ -35,7 +35,10 @@ const SingleFruitPage = (): ReactElement => {
     return (
         <div className="single-fruit">
             {content}
-            <Link to="/products" className="single-fruit__btn">Main Page</Link>
+            <Link 
+                to="/products" 
+                className="single-fruit__btn"
+                tabIndex={0}>Main Page</Link>
         </div>
     );
 }

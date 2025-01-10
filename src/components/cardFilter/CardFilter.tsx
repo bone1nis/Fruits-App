@@ -24,6 +24,14 @@ const CardFilter = (): ReactElement => {
                 className="card-filter__btn"
                 onClick={() => onChangeFilter("favorites")}
                 tabIndex={0}>Favorites</button>
+            <button 
+                className="card-filter__btn"
+                onClick={() => onChangeFilter("name")}
+                tabIndex={0}>Name</button>
+            <button 
+                className="card-filter__btn"
+                onClick={() => onChangeFilter("calories")}
+                tabIndex={0}>Calories</button>
         </div>
     );
 }

@@ -35,10 +35,14 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        transition: 1s all ease;
         &:hover {
             color: #fff;
             opacity: 0.8;
-            transition: 1s all ease;
+        }
+        &:focus {
+            color: #fff;
+            opacity: 0.8;
         }
     }
 }

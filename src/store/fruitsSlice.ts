@@ -69,14 +69,3 @@ export const {
 } = actions;
 
 export const { selectAll, selectById } = fruitsAdapter.getSelectors((state: RootState) => state.fruits)
-
-export const selectedFilteredFruits = (state: RootState) => {
-    const allFruits = selectAll(state);
-    if (state.fruits.filterActive === "all") {
-        return allFruits;
-    } else if (state.fruits.filterActive === "favorites") {
-        return allFruits.filter(fruit => fruit.isLiked)
-    }
-
-    return allFruits;
-}
