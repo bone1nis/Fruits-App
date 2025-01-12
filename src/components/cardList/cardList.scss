@@ -2,4 +2,12 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 40px;
+  &__btn {
+    margin-top: 20px;
+  }
+  &__btns {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+  }
 }

@@ -46,9 +46,6 @@
     &:hover {
       fill: $dark;
     }
-    &:focus {
-      fill: $dark;
-    }
   }
   &__nutritions {
     grid-column: 1 / 3;
@@ -70,9 +67,6 @@
     transition: 0.5s ease all;
     fill: #fff;
     &:hover {
-      fill: $dark;
-    }
-    &:focus {
       fill: $dark;
     }
   }
