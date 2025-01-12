@@ -1,0 +1,37 @@
+@use "../../assets/style/_variables.scss" as *;
+
+.btn {
+  border-radius: 20px;
+  padding: 10px 60px;
+  width: 130px;
+  height: 30px;
+  background-color: $main-color;
+  color: #fff;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 1s all ease;
+  &:hover {
+    color: #fff;
+    opacity: 0.8;
+  }
+  &:focus {
+    color: #fff;
+    opacity: 0.6;
+  }
+  &:disabled {
+    color: #fff;
+    opacity: 0.5;
+    cursor: auto;
+  }
+
+  &__average {
+    height: 40px;
+    width: 160px;
+  }
+  &__long {
+    width: 100%;
+    height: 40px;
+  }
+}

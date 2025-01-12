@@ -1,112 +1,132 @@
 import { ReactElement } from "react";
 
-import { FieldErrors, SubmitHandler, useForm, UseFormRegister } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup"
 import { nanoid } from "nanoid";
 
 import { useAppDispatch } from "../../hooks/hooks";
 import { fruitsAdd } from "../../store/fruitsSlice";
+
+import { schema, FormData } from "../../utils/formUtils";
 import { IFruit } from "../../types/data";
 
-import "./cardCreateForm.scss"
+import InputField from "../inputField/InputField";
 
-type FormData = yup.InferType<typeof schema>;
-
-interface InputFieldProps {
-    id: keyof FormData,
-    label: string,
-    register: UseFormRegister<FormData>,
-    errors: FieldErrors<FormData>
-}
-
-const numberField = () => yup.number()
-.max(10000, "The value of this field can be no more than 10000")
-.required("This field is required")
-.typeError("The value of this field can only be a number");
-
-const schema = yup.object({
-    name: yup.string()
-        .required("This field is required"),
-    family: yup.string()
-        .required("This field is required"),
-    order: yup.string()
-        .required("This field is required"),
-    genus: yup.string()
-        .required("This field is required"),
-    calories: numberField(),
-    fat: numberField(),
-    sugar: numberField(),
-    carbohydrates: numberField(),
-    protein: numberField(),
-})
-
+import "./cardCreateForm.scss";
 
 const CardCreateForm = (): ReactElement => {
+  const dispatch = useAppDispatch();
 
-    const dispatch = useAppDispatch();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isValid },
+  } = useForm<FormData>({
+    mode: "onChange",
+    resolver: yupResolver(schema),
+  });
 
-    const { register, handleSubmit, reset, formState: { errors, isValid } } = useForm<FormData>({
-        mode: "onChange",
-        resolver: yupResolver(schema)
-    })
+  const onSubmit: SubmitHandler<FormData> = (data) => {
+    reset();
 
-    const onSubmit: SubmitHandler<FormData> = data => {
-        reset()
+    const res: IFruit = {
+      name: data.name,
+      id: nanoid(),
+      family: data.family,
+      order: data.order,
+      genus: data.genus,
+      nutritions: {
+        calories: data.calories,
+        fat: data.fat,
+        sugar: data.sugar,
+        carbohydrates: data.carbohydrates,
+        protein: data.protein,
+      },
+    };
 
-        const res: IFruit = {
-            name: data.name,
-            id: nanoid(),
-            family: data.family,
-            order: data.order,
-            genus: data.genus,
-            nutritions: {
-                calories: data.calories,
-                fat: data.fat,
-                sugar: data.sugar,
-                carbohydrates: data.carbohydrates,
-                protein: data.protein
-            }
-        }
-        
-        dispatch(fruitsAdd(res))
-    }
+    dispatch(fruitsAdd(res));
+  };
 
-    return (
-        <div className="create-form">
-            <h2 className="create-form__title">Create your own fruit</h2>
-            <form className="create-form__form" onSubmit={handleSubmit(onSubmit)}>
-                <InputField id={"name"} label={"Name:"} register={register} errors={errors}/>
-                <div className="create-form__information">
-                    <InputField id={"family"} label={"Family:"} register={register} errors={errors}/>
-                    <InputField id={"order"} label={"Order:"} register={register} errors={errors}/>
-                    <InputField id={"genus"} label={"Genus:"} register={register} errors={errors}/>
-                </div>
-                <InputField id={"calories"} label={"Calories:"} register={register} errors={errors}/>
-                <InputField id={"fat"} label={"Fat:"} register={register} errors={errors}/>
-                <InputField id={"sugar"} label={"Sugar:"} register={register} errors={errors}/>
-                <InputField id={"carbohydrates"} label={"Carbohydrates:"} register={register} errors={errors}/>
-                <InputField id={"protein"} label={"Protein:"} register={register} errors={errors}/>
-                <button 
-                    type="submit" 
-                    className="create-form__submit"
-                    disabled={!isValid}>Send</button>
-            </form>
+  return (
+    <div className="create-form">
+      <h2 className="create-form__title">Create your own fruit</h2>
+      <form className="create-form__form" onSubmit={handleSubmit(onSubmit)}>
+        <InputField
+          id={"name"}
+          label={"Name:"}
+          register={register}
+          errors={errors}
+          clazz="create-form"
+        />
+        <div className="create-form__information">
+          <InputField
+            id={"family"}
+            label={"Family:"}
+            register={register}
+            errors={errors}
+            clazz="create-form"
+          />
+          <InputField
+            id={"order"}
+            label={"Order:"}
+            register={register}
+            errors={errors}
+            clazz="create-form"
+          />
+          <InputField
+            id={"genus"}
+            label={"Genus:"}
+            register={register}
+            errors={errors}
+            clazz="create-form"
+          />
         </div>
-    )
-}
-
-const InputField = ({ id, label, register, errors }: InputFieldProps): ReactElement => {
-    return (
-        <div className="create-form__section">
-            <label htmlFor={id} className="create-form__label">{label}</label>
-            <input 
-                id={id}
-                className="create-form__input"
-                {...register(id)} />
-            {errors[id] && <span className="create-form__error">{errors[id].message}</span>}
-        </div>
-    )
-}
+        <InputField
+          id={"calories"}
+          label={"Calories:"}
+          register={register}
+          errors={errors}
+          clazz="create-form"
+        />
+        <InputField
+          id={"fat"}
+          label={"Fat:"}
+          register={register}
+          errors={errors}
+          clazz="create-form"
+        />
+        <InputField
+          id={"sugar"}
+          label={"Sugar:"}
+          register={register}
+          errors={errors}
+          clazz="create-form"
+        />
+        <InputField
+          id={"carbohydrates"}
+          label={"Carbohydrates:"}
+          register={register}
+          errors={errors}
+          clazz="create-form"
+        />
+        <InputField
+          id={"protein"}
+          label={"Protein:"}
+          register={register}
+          errors={errors}
+          clazz="create-form"
+        />
+        <button
+          type="submit"
+          className="btn create-form__submit"
+          disabled={!isValid}
+        >
+          Send
+        </button>
+      </form>
+    </div>
+  );
+};
 
 export default CardCreateForm;

@@ -34,6 +34,9 @@ const fruitsSlice = createSlice({
         removeFruit: (state, action: PayloadAction<number | string>) => {
             fruitsAdapter.removeOne(state, action.payload)
         },
+        setFruit: (state, action: PayloadAction<IFruit>) => {
+            fruitsAdapter.upsertOne(state, action.payload)
+        },
         toggleLiked: (state, action: PayloadAction<number | string>) => {
             const fruit = state.entities[action.payload]
             fruit.isLiked = !fruit.isLiked
@@ -64,6 +67,7 @@ export default reducer;
 export const {
     fruitsAdd,
     removeFruit,
+    setFruit,
     toggleLiked,
     setFilter
 } = actions;

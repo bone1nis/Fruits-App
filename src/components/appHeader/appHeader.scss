@@ -1,51 +1,51 @@
 @use "../../assets/style/_variables.scss" as *;
 
 .header {
-    background-color: rgba(93, 113, 221, 0.1);
-    &__content {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 20px 260px;
+  background-color: rgba(93, 113, 221, 0.1);
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 260px;
+  }
+  &__title {
+    color: $main-color;
+    font-size: 24px;
+    font-weight: bold;
+    transition: 1s all ease;
+    &:hover {
+      opacity: 0.8;
+      color: $main-color;
     }
-    &__title {
-        color: $main-color;
-        font-size: 24px;
-        font-weight: bold;
-        transition: 1s all ease;
-        &:hover {
-            opacity: 0.8;
-            color: $main-color;
-        }
-        &:focus {
-            opacity: 0.8;
-            color: $main-color;
-        }
+    &:focus {
+      opacity: 0.8;
+      color: $main-color;
     }
-    &__nav {
-        display: flex;
-        gap: 40px;
+  }
+  &__nav {
+    display: flex;
+    gap: 40px;
+  }
+  &__link {
+    font-size: 18px;
+    color: $dark;
+    transition: 0.5 all ease;
+    &:hover {
+      color: $main-color;
     }
-    &__link {
-        font-size: 18px;
-        color: $dark;
-        transition: 0.5 all ease;
-        &:hover {
-            color: $main-color;
-        }
-        &:focus {
-            color: $main-color;
-            padding-bottom: 3px;
-            border-bottom: 3px solid $main-color;
-        }
+    &:focus {
+      color: $main-color;
+      padding-bottom: 3px;
+      border-bottom: 3px solid $main-color;
     }
-    &__img {
-        height: 200px;
-        width: 100vw;
-        object-fit: cover;
-    }
+  }
+  &__img {
+    height: 200px;
+    width: 100vw;
+    object-fit: cover;
+  }
 }
 
 a.active {
-    color: $main-color;
+  color: $main-color;
 }

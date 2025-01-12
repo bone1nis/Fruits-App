@@ -1,36 +1,12 @@
 @use "../../assets/style/_variables.scss" as *;
 
 .card-filter {
-    border-radius: 20px;
-    width: 1040px;
-    height: 5cap;
-    box-shadow: 4px 8px 40px 0 rgba(8, 24, 111, 0.2);
-    margin-bottom: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-
-    &__btn {
-        border-radius: 20px;
-        padding: 10px 60px;
-        width: 130px;
-        height: 30px;
-        background-color: $main-color;
-        color: #fff;
-        font-size: 18px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        &:hover {
-            color: #fff;
-            opacity: 0.8;
-            transition: 1s all ease;
-        }
-        &:focus {
-            color: #fff;
-            opacity: 0.8;
-            transition: 1s all ease;
-        }
-    }
+  border-radius: 20px;
+  padding: 10px 0;
+  box-shadow: 4px 8px 40px 0 rgba(8, 24, 111, 0.2);
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }

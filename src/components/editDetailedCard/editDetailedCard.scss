@@ -1,0 +1,55 @@
+@use "../../assets/style/_variables.scss" as *;
+
+.edit-detailed-card {
+  background-color: rgba(93, 113, 221, 0.1);
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  &__title {
+    display: flex;
+    justify-content: center;
+  }
+  &__info {
+    width: 100%;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    font-size: 20px;
+  }
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  &__nutritions {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  &__btn {
+    margin: 20px auto;
+  }
+  &__error {
+    color: red;
+    margin: 5px 0;
+    font-weight: bold;
+  }
+  &__section {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+  }
+  &__label {
+    font-size: 18px;
+  }
+  &__input {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 22px;
+    transition: 1s all ease;
+    &:focus {
+      background-color: #cccccc91;
+    }
+  }
+}

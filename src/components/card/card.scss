@@ -1,83 +1,83 @@
 @use "../../assets/style/_variables.scss" as *;
 
 .fruits-card {
-    &__wrapper {
-        border-radius: 20px;
-        width: 320px;
-        height: 400px;
-        color: #fff;
-        background-color: $main-color;
-        padding: 40px 30px;
-        display: grid;
-        grid-template-columns: 5fr 1fr;
-        grid-template-rows: auto 1fr 1fr;
-        align-items: center;
-        justify-content: space-between;
-        overflow: hidden;
-        cursor: pointer;
-        transition: 0.5s ease all;
-        &:hover {
-            box-shadow: 4px 8px 40px 0 rgba(8, 24, 111, 0.7);
-        }
-        &:focus {
-            box-shadow: 4px 8px 40px 0 rgba(8, 24, 111, 0.7);
-        }
+  margin: 0 auto;
+  &__wrapper {
+    border-radius: 20px;
+    width: 320px;
+    height: 400px;
+    color: #fff;
+    background-color: $main-color;
+    padding: 40px 30px;
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    grid-template-rows: auto 1fr 1fr;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 0.5s ease all;
+    &:hover {
+      box-shadow: 4px 8px 40px 0 rgba(8, 24, 111, 0.7);
     }
-    &__title {
-        grid-column: 1;
-        border-radius: 8px;
-        padding: 8px 16px;
-        background: rgba(255, 255, 255, 0.2);
-        & h4 {
-            text-align: center;
-            font-weight: normal;
-            font-size: 20px;
-        }
+    &:focus {
+      box-shadow: 4px 8px 40px 0 rgba(8, 24, 111, 0.7);
     }
-    &__delete-button {
-        grid-column: 2;
-        justify-self: end;
-        align-self: start;
-        cursor: pointer;
+  }
+  &__title {
+    grid-column: 1;
+    border-radius: 8px;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.2);
+    & h4 {
+      text-align: center;
+      font-weight: normal;
+      font-size: 20px;
     }
-    &__delete-icon {
-        transition: 0.5s ease all;
-        fill: #fff;
-        &:hover {
-            fill: $dark;
-        }
-        &:focus {
-            fill: $dark;
-        }
+  }
+  &__control {
+    grid-column: 2;
+    justify-self: end;
+    align-self: start;
+  }
+  &__control-icon {
+    transition: 0.5s ease all;
+    fill: #fff;
+    &:hover {
+      fill: $dark;
     }
-    &__nutritions {
-        grid-column: 1 / 3;
-        grid-row: 2;
-        font-size: 18px;
+    &:focus {
+      fill: $dark;
     }
-    &__descirption {
-        grid-column: 1;
-        grid-row: 3;
-        font-size: 18px;
+  }
+  &__nutritions {
+    grid-column: 1 / 3;
+    grid-row: 2;
+    font-size: 18px;
+  }
+  &__descirption {
+    grid-column: 1;
+    grid-row: 3;
+    font-size: 18px;
+  }
+  &__like {
+    grid-column: 2;
+    justify-self: end;
+    align-self: end;
+    cursor: pointer;
+  }
+  &__like-icon {
+    transition: 0.5s ease all;
+    fill: #fff;
+    &:hover {
+      fill: $dark;
     }
-    &__like {
-        grid-column: 2;
-        justify-self: end;
-        align-self: end;
-        cursor: pointer;
+    &:focus {
+      fill: $dark;
     }
-    &__like-icon {
-        transition: 0.5s ease all;
-        fill: #fff;
-        &:hover {
-            fill: $dark;
-        }
-        &:focus {
-            fill: $dark;
-        }
-    }
-    &__like-icon.liked {
-        transition: 0.5s ease all;
-        fill: $dark;
-    }
+  }
+  &__like-icon.liked {
+    transition: 0.5s ease all;
+    fill: $dark;
+  }
 }

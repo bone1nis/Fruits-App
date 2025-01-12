@@ -1,28 +1,27 @@
-
 @use "../../assets/style/_variables.scss" as *;
 
 .footer {
-    height: 50px;
-    background-color: rgba(93, 113, 221, 0.1);
-    opacity: 0.95;
-    &__nav {
-        margin-top: 15px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 80px;
+  height: 50px;
+  background-color: rgba(93, 113, 221, 0.1);
+  opacity: 0.95;
+  &__nav {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+  }
+  &__link {
+    font-size: 18px;
+    color: $dark;
+    transition: 0.5 all ease;
+    &:hover {
+      color: $main-color;
     }
-    &__link {
-        font-size: 18px;
-        color: $dark;
-        transition: 0.5 all ease;
-        &:hover {
-            color: $main-color;
-        }
-        &:focus {
-            color: $main-color;
-            padding-bottom: 3px;
-            border-bottom: 3px solid $main-color;
-        }
+    &:focus {
+      color: $main-color;
+      padding-bottom: 3px;
+      border-bottom: 3px solid $main-color;
     }
+  }
 }
