@@ -21,7 +21,10 @@ const Card = ({ fruit, onRemove, onLiked }: ComponentProps): ReactElement => {
       onRemove();
     } else if (target.closest(".fruits-card__like")) {
       onLiked();
-    } else {
+    } else if (target.closest(".fruits-card__edit-button")) {
+      navigate(`/products/${fruit.id}/edit`);
+    }
+    else {
       navigate(`/products/${fruit.id}`);
     }
   };

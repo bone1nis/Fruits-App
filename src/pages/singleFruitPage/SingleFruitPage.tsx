@@ -5,18 +5,23 @@ import { useAppSelector } from "../../hooks/hooks";
 import { selectById } from "../../store/fruitsSlice";
 import { RootState } from "../../store";
 
-import "./singleFruitPage.scss";
 import DetailedCard from "../../components/detailedCard/DetailedCard";
 import EditDetailedCard from "../../components/editDetailedCard/EditDetailedCard";
 
-const SingleFruitPage = (): ReactElement => {
+import "./singleFruitPage.scss";
+
+interface ComponentProps {
+  editMode: boolean
+}
+
+const SingleFruitPage = ({ editMode }: ComponentProps): ReactElement => {
   const { fruitId } = useParams() as { fruitId: string };
 
   const fruit = useAppSelector((state: RootState) =>
     selectById(state, fruitId)
   );
 
-  const [showEdit, setShowEdit] = useState(false);
+  const [showEdit, setShowEdit] = useState(editMode);
 
   const changeShowEdit = () => setShowEdit(!showEdit);
 

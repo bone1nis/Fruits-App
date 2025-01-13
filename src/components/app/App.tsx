@@ -30,7 +30,8 @@ const App = (): ReactElement => {
           <Routes>
             <Route index element={<MainPage />} />
             <Route path="/products" element={<MainPage />} />
-            <Route path="/products/:fruitId" element={<SingleFruitPage />} />
+            <Route path="/products/:fruitId" element={<SingleFruitPage editMode={false}/>} />
+            <Route path="/products/:fruitId/edit" element={<SingleFruitPage editMode={true}/>} />
             <Route path="/create-product" element={<CreateProductPage />} />
           </Routes>
         </main>
