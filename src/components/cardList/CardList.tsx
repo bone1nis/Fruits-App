@@ -55,7 +55,7 @@ const CardList = (): ReactElement => {
   };
 
   const renderCards = (arr: IFruit[], amount: number) => {
-    if (!arr.length) {
+    if (!arr.length && fruits.filterActive === "favorites") {
       return (
         <div className="fruits-cards__not-found">
           You haven't liked anything yet
