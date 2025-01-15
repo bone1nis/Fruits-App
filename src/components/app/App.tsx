@@ -23,7 +23,7 @@ const App = (): ReactElement => {
   }, [dispatch]);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <div className="app">
         <AppHeader />
         <main className="main">

@@ -9,4 +9,28 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
+  &__search-input {
+    width: 300px;
+    font-size: 18px;
+    padding: 6px 0 4px 10px;
+    border: 1px solid #92a2f8;
+    border-radius: 8px;
+    box-shadow: 4px 8px 40px 0 rgba(8, 24, 111, 0.1);
+    transition: 1s all ease;
+    &:focus {
+      background-color: #cccccc91;
+    }
+  }
+}
+
+
+.fruit-drop {
+  position: absolute;
+  &__section {
+    width: 300px;
+    height: 20px;
+  }
+  &__title {
+    font-size: 18px;
+  }
 }
