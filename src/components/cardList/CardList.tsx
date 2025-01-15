@@ -1,17 +1,22 @@
 import { ReactElement, useMemo, useState } from "react";
 
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+
 import { removeFruit, selectAll, toggleLiked } from "../../store/fruitsSlice";
 import store from "../../store";
+
 import { IFruit } from "../../types/data";
 
 import Card from "../card/Card";
+import Spinner from "../spinner/Spinner";
 
 import "./cardList.scss";
 
 const CardList = (): ReactElement => {
   const dispatch = useAppDispatch();
   const fruits = useAppSelector((state) => state.fruits);
+
+  const loadingStatus = useAppSelector((state) => state.fruits.loadingStatus);
 
   const [visibleFruits, setVisibleFruits] = useState(6);
 
@@ -49,7 +54,15 @@ const CardList = (): ReactElement => {
     dispatch(toggleLiked(id));
   };
 
-  const renderCards = (arr: IFruit[], amount: number): ReactElement[] => {
+  const renderCards = (arr: IFruit[], amount: number) => {
+    if (!arr.length) {
+      return (
+        <div className="fruits-cards__not-found">
+          You haven't liked anything yet
+        </div>
+      );
+    }
+
     const limitedFruits = arr.slice(0, amount);
 
     const res = limitedFruits.map((item) => {
@@ -68,9 +81,16 @@ const CardList = (): ReactElement => {
 
   const fruitCards = renderCards(filteredFruits, visibleFruits);
 
+  const spinner = loadingStatus === "loading" && (
+    <Spinner clazz="fruits-cards__spinner" />
+  );
+
   return (
     <>
-      <div className="fruits-cards">{fruitCards}</div>
+      <div className="fruits-cards">
+        {spinner}
+        {fruitCards}
+      </div>
       <div className="fruits-cards__btns">
         <button
           className="btn btn__average fruits-cards__btn"

@@ -10,4 +10,11 @@
     justify-content: center;
     gap: 40px;
   }
+  &__spinner {
+    margin: 0 auto;
+  }
+  &__not-found {
+    margin: 0 auto;
+    font-size: 18px;
+  }
 }
