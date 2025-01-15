@@ -18,7 +18,7 @@ export const fetchFruits = createAsyncThunk<IFruit[]>(
     async () => {
         const request = useHttp<IFruit[]>();
 
-        const res = await request("/api");
+        const res = await request("https://cors-anywhere.herokuapp.com/https://www.fruityvice.com/api/fruit/all");
         return res
     }
 );
