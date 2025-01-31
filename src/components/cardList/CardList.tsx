@@ -11,12 +11,13 @@ import Card from "../card/Card";
 import Spinner from "../spinner/Spinner";
 
 import "./cardList.scss";
+import { useFetchAllFruitsQuery } from "../../service/fruitsService";
 
 const CardList = (): ReactElement => {
   const dispatch = useAppDispatch();
   const fruits = useAppSelector((state) => state.fruits);
 
-  const loadingStatus = useAppSelector((state) => state.fruits.loadingStatus);
+  const { error, isLoading } = useFetchAllFruitsQuery();
 
   const [visibleFruits, setVisibleFruits] = useState(6);
 
@@ -81,14 +82,16 @@ const CardList = (): ReactElement => {
 
   const fruitCards = renderCards(filteredFruits, visibleFruits);
 
-  const spinner = loadingStatus === "loading" && (
-    <Spinner clazz="fruits-cards__spinner" />
+  const spinner = isLoading && <Spinner clazz="fruits-cards__spinner" />;
+  const errorMessage = error && (
+    <div className="fruits-cards__error">Error...</div>
   );
 
   return (
     <>
       <div className="fruits-cards">
         {spinner}
+        {errorMessage}
         {fruitCards}
       </div>
       <div className="fruits-cards__btns">
