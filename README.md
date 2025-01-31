@@ -7,6 +7,7 @@
 ### React Router
 ### React Hook Form + YUP
 ### Redux
+### RTK Query
 
 ## Project setup
 ```
