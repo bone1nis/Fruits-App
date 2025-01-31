@@ -37,7 +37,7 @@ const CardList = (): ReactElement => {
     }
 
     return allFruits;
-  }, [fruits.filterActive, fruits]);
+  }, [fruits]);
 
   const onLoadMore = (amount?: number): void => {
     if (amount) {
