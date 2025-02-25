@@ -94,12 +94,14 @@ const CardList = (): ReactElement => {
       </div>
       <div className="fruits-cards__btns">
         <button
+          disabled={!!error}
           className="btn btn__average fruits-cards__btn"
           onClick={() => onLoadMore(3)}
         >
           Load more
         </button>
         <button
+          disabled={!!error}
           className="btn btn__average fruits-cards__btn"
           onClick={() => onLoadMore()}
         >
