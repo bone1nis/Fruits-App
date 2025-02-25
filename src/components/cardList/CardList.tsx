@@ -56,7 +56,7 @@ const CardList = (): ReactElement => {
   };
 
   const renderCards = (arr: IFruit[], amount: number) => {
-    if (!arr.length && fruits.filterActive === "favorites") {
+    if (!arr.length && fruits.filterActive === "favorites" && !error) {
       return (
         <div className="fruits-cards__not-found">
           You haven't liked anything yet
@@ -66,7 +66,7 @@ const CardList = (): ReactElement => {
 
     const limitedFruits = arr.slice(0, amount);
 
-    const res = limitedFruits.map((item) => {
+    return limitedFruits.map((item) => {
       return (
         <Card
           key={item.id}
@@ -76,14 +76,12 @@ const CardList = (): ReactElement => {
         />
       );
     });
-
-    return res;
   };
 
   const fruitCards = renderCards(filteredFruits, visibleFruits);
 
   const spinner = isLoading && <Spinner clazz="fruits-cards__spinner" />;
-  const errorMessage = error && (
+  const errorMessage = error && Array.isArray(fruitCards) && fruitCards.length < 1 && (
     <div className="fruits-cards__error">Error...</div>
   );
 
